@@ -45,3 +45,6 @@ cd PyQt5_gpl-5.12
 sudo python3.6 configure.py
 sudo make
 sudo make install
+
+
+https://github.com/SigmaQuan/rasa_chatbot/blob/master/data/total_word_feature_extractor.dat
