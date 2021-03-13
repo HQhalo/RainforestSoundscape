@@ -1,0 +1,21 @@
+Switch to the /tmp directory and use curl to download the installer using your command terminal:
+
+cd /tmp
+curl –O https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+This version is designed for Python 3.7. If you are using Python 2.7, use the appropriate URL.
+
+Step 3: Verify the Download Checksum
+Checksum is a security tool used to verify the authenticity and integrity of a downloaded script.
+
+Enter the following:
+
+sha256sum Anaconda3–2020.02–Linux–x86_64.sh
+Your system will display a series of letters and numbers:
+
+69581cf739365ec7fb95608eef694ba959d7d33b36eb961953f2b82cb25bdf5a Anaconda3-2019.07-Linux-x86_64.sh
+Compare those to the appropriate checksum (or hash) in the Anaconda documentation. If you have chosen a different version, make sure to check the documentation for that version’s checksum.
+
+Step 4: Run Anaconda Installation Script
+The Anaconda installer is a bash script. To run the installation script, use the command:
+
+bash Anaconda3-2020.02-Linux-x86_64.sh
