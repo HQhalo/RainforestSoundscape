@@ -23,3 +23,25 @@ bash Anaconda3-2020.02-Linux-x86_64.sh
 
 
 sudo apt-get install libasound-dev portaudio19-dev libportaudio2 libportaudiocpp0
+
+
+
+sudo apt-get update
+sudo apt-get install qt5-default
+sudo apt-get install sip-dev
+
+cd /usr/src
+sudo wget https://www.riverbankcomputing.com/static/Downloads/sip/sip-4.19.14.tar.gz
+sudo tar xzf sip-4.19.14.tar.gz
+cd sip-4.19.14
+sudo python3.6 configure.py --sip-module PyQt5.sip
+sudo make
+sudo make install
+
+cd /usr/src
+sudo wget https://www.riverbankcomputing.com/static/Downloads/PyQt5/PyQt5_gpl-5.12.tar.gz
+sudo tar xzf PyQt5_gpl-5.12.tar.gz
+cd PyQt5_gpl-5.12
+sudo python3.6 configure.py
+sudo make
+sudo make install
