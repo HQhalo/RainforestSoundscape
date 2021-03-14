@@ -47,3 +47,5 @@ sudo make
 sudo make install
 
 https://raw.githubusercontent.com/SigmaQuan/rasa_chatbot/master/data/total_word_feature_extractor.dat
+
+https://github.com/jjhelmus/berryconda/releases/download/v2.0.0/Berryconda2-2.0.0-Linux-armv7l.sh
