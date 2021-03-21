@@ -14,9 +14,7 @@ import asyncio
 # standard Python
 sio = socketio.Client()
 
-# asyncio
-sio = socketio.AsyncClient()
-await sio.connect('http://localhost:5000', namespaces=['/wakeup'])
+
 class PorcupineDemo(Thread):
     """
     Microphone Demo for Porcupine wake word engine. It creates an input audio stream from a microphone, monitors it, and
@@ -173,6 +171,7 @@ def main():
     parser.add_argument('--show_audio_devices', action='store_true')
 
     args = parser.parse_args()
+   
 
     if args.show_audio_devices:
         PorcupineDemo.show_audio_devices()
@@ -199,6 +198,7 @@ def main():
             output_path=args.output_path,
             input_device_index=args.audio_device_index).run()
 
-
 if __name__ == '__main__':
     main()
+    sio.connect('http://localhost:5000', namespaces=['/wakeup'])
+    sio.wait()
