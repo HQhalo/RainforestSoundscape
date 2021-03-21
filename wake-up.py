@@ -10,7 +10,7 @@ import pyaudio
 import soundfile
 
 import socketio
-import asyncio
+
 # standard Python
 sio = socketio.Client()
 
@@ -102,7 +102,7 @@ class PorcupineDemo(Thread):
                 if result >= 0:
                     print('[%s] Detected %s' % (str(datetime.now()), keywords[result]))
                     if(keywords[result] == 'alexa'):
-                        await sio.emit('wake_up', {'data': keywords[result]})
+                        sio.emit('wake_up', {'data': keywords[result]})
 
         except KeyboardInterrupt:
             print('Stopping ...')
