@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, copy_current_request_context
+from flask import Flask
 from flask_socketio import SocketIO, emit, disconnect
 from threading import Lock
 
@@ -16,29 +16,6 @@ thread_lock = Lock()
 def test_message(message):
     print("wake up")
     print(message['data'])
-    # session['receive_count'] = session.get('receive_count', 0) + 1
-    # emit('my_response',
-    #      {'data': message['data'], 'count': session['receive_count']})
-
-
-@socket_.on('my_broadcast_event', namespace='/wakeup')
-def test_broadcast_message(message):
-    session['receive_count'] = session.get('receive_count', 0) + 1
-    emit('my_response',
-         {'data': message['data'], 'count': session['receive_count']},
-         broadcast=True)
-
-
-@socket_.on('disconnect_request', namespace='/wakeup')
-def disconnect_request():
-    @copy_current_request_context
-    def can_disconnect():
-        disconnect()
-
-    session['receive_count'] = session.get('receive_count', 0) + 1
-    emit('my_response',
-         {'data': 'Disconnected!', 'count': session['receive_count']},
-         callback=can_disconnect)
 
 
 if __name__ == '__main__':
