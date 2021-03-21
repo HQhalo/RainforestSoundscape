@@ -9,7 +9,14 @@ import pvporcupine
 import pyaudio
 import soundfile
 
+import socketio
+import asyncio
+# standard Python
+sio = socketio.Client()
 
+# asyncio
+sio = socketio.AsyncClient()
+await sio.connect('http://localhost:5000', namespaces=['/wakeup'])
 class PorcupineDemo(Thread):
     """
     Microphone Demo for Porcupine wake word engine. It creates an input audio stream from a microphone, monitors it, and
@@ -96,6 +103,8 @@ class PorcupineDemo(Thread):
                 result = porcupine.process(pcm)
                 if result >= 0:
                     print('[%s] Detected %s' % (str(datetime.now()), keywords[result]))
+                    if(keywords[result] == 'alexa'):
+                        await sio.emit('wake_up', {'data': keywords[result]})
 
         except KeyboardInterrupt:
             print('Stopping ...')
